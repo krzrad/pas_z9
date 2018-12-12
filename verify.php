@@ -17,7 +17,7 @@
 		$rekord = mysqli_fetch_array($result);
 		if($rekord and $rekord['haslo']==$password){
 			session_start();
-			$_SESSION["user"] = $id;
+			$_SESSION["user"] = $rekord['idp'];
 			$_SESSION["group"] = "worker";
 			header("Location: userpanel.php");
 		} else {
@@ -25,7 +25,7 @@
 			$rekord = mysqli_fetch_array($result);
 			if($rekord and $rekord['haslo']==$password){
 				session_start();
-				$_SESSION["user"] = $id;
+				$_SESSION["user"] = $rekord['ids'];
 				if($login=="admin") {
 					$_SESSION["group"] = "admin";
 					header("Location: admin.html");
