@@ -9,6 +9,7 @@
 	<BODY>';
 	if($_SESSION["group"] == 'coach'){
 		echo '<div class="row">';
+		echo '<div class="col-s-1 col-2">';
 		$DBhost = 'sql.kradowskipas.nazwa.pl:3306';
 		$DBuser = 'kradowskipas_elearning';
 		$DBpassword ='Zadanie9';
@@ -20,18 +21,17 @@
 			echo "Error: ".mysqli_connect_error().PHP_EOL;
 			exit;
 		};
-		echo '<div class="col-s-1 col-2">';
-		$result = mysqli_query($connect, "SELECT * FROM lekcje WHERE ids='".$_SESSION["user"]."'");
+		$result = mysqli_query($connect, "SELECT * FROM test WHERE ids='".$_SESSION["user"]."'");
 		if(mysqli_num_rows($result)){
 			while ($row=mysqli_fetch_array($result))
-			echo '<a href="edytujLekcje.php?l='.$row['idl'].'">'.$row['tytulLekcji'].'</a><br>';
+			echo '<a href="edytujTest.php?l='.$row['idt'].'">'.$row['nazwa'].'</a><br>';
 		} else {
-			echo 'Brak lekcji!<br>';
+			echo 'Brak testów!<br>';
 		}
-		echo '<a href="nowa_lekcja.php">Utwórz nową lekcję</a><br>
+		echo '<a href="nowy_test.php">Utwórz nowy test</a><br>
 		</div>
 		<div class="col-s-1 col-8">
-			edytor
+			dd
 		</div>
 		</div><a href="coachpanel.php">';
 	} else if($_SESSION["group"] == 'worker') {
@@ -47,13 +47,13 @@
 			echo "Error: ".mysqli_connect_error().PHP_EOL;
 			exit;
 		};
-		$result = mysqli_query($connect, "SELECT * FROM lekcje");
+		$result = mysqli_query($connect, "SELECT * FROM test");
 		if(mysqli_num_rows($result)){
 			echo '<div class="col-s-1 col-2">';
 			while ($row=mysqli_fetch_array($result))
-			echo '<a href="czytajLekcje.php?l='.$row['idl'].'">'.$row['tytulLekcji'].'</a><br>';
+			echo '<a href="rozwiaz.php?l='.$row['idt'].'">'.$row['tytulLekcji'].'</a><br>';
 		} else {
-			echo 'Brak lekcji!<br>';
+			echo 'Brak testów!<br>';
 		}
 		echo '<br>
 		</div>

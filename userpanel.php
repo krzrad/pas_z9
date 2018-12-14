@@ -7,7 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 	<BODY>';
-	if($_SESSION["group"] == 'coach'){
+	if($_SESSION["group"] == 'worker'){
 		echo '<a href="lekcje.php">Lekcje</a><br>
 		<a href="testy.php">Testy</a><br>
 		<a href="wyniki.php">Wyniki</a><br>
